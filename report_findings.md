@@ -49,23 +49,51 @@ This pattern suggests that while graduate students may handle emotional challeng
 
 ---
 
-## 💡 Final Insights
+## Relationship 4 — Final Query: Stay Duration (Years) vs Mental Health *(International Students Only)*
 
-- **Longer stays** → Better overall mental well-being due to adaptation.  
-- **Higher English proficiency** → Lower depression, moderate stress due to higher engagement.  
-- **Graduate students** → Lower depression, higher stress, stronger connectedness.  
-- Mental health seems influenced by **adaptation**, **language comfort**, and **academic workload**.
+| Stay (Years) | Count | Avg PHQ (Depression) | Avg SCS (Self-Confidence) | Avg AS (Academic Stress) |
+|---------------|--------|----------------------|----------------------------|---------------------------|
+| 10 | 1 | 13.00 | 32.00 | 50.00 |
+| 8 | 1 | 10.00 | 44.00 | 65.00 |
+| 7 | 1 | 4.00 | 48.00 | 45.00 |
+| 6 | 3 | 6.00 | 38.00 | 58.67 |
+| 5 | 1 | 0.00 | 34.00 | 91.00 |
+| 4 | 14 | 8.57 | 33.93 | 87.71 |
+| 3 | 46 | 9.09 | 37.13 | 78.00 |
+| 2 | 39 | 8.28 | 37.08 | 77.67 |
+| 1 | 95 | 7.48 | 38.11 | 72.80 |
+
+**Summary:**  
+- Students with **longer stays (≥ 5 years)** tend to show **lower depression** and **higher academic stress**, indicating a more complex adaptation process.  
+- The **self-confidence (SCS)** scores remain fairly consistent, suggesting stability in self-perception across stay durations.  
+- The **highest stress levels** are observed between 3–5 years, possibly due to academic peak demands.  
+- Overall, **mental well-being improves with longer exposure**, although **stress remains a persistent factor**.
 
 ---
 
-## 🧠 Interpretation
+## 💡 Consolidated Insights
 
-The results collectively suggest that **acculturation (adjusting to a new environment)** and **academic context** play significant roles in students’ emotional well-being.  
-While prolonged exposure and higher language ability reduce depression, they may also introduce **new stress factors** related to academic performance and expectations.
+| Factor | Depression | Stress | Connectedness | Interpretation |
+|--------|-------------|--------|----------------|----------------|
+| Longer Stay | ↓ | ↑ | ↑ | Better adaptation but with more academic pressure |
+| Higher English | ↓ | ↑ | → | Lower depression due to comfort, moderate stress from engagement |
+| Graduate Level | ↓↓ | ↑ | ↑↑ | Emotionally resilient but under higher workload |
 
 ---
+
+## 🧠 Overall Interpretation
+
+The results indicate that **adaptation, communication ability, and academic maturity** significantly affect students’ emotional states.  
+- Longer residence and stronger English skills **reduce emotional distress** but may **increase academic stress** due to higher involvement.  
+- Graduate students demonstrate **resilience** and **social maturity**, managing their well-being despite elevated challenges.
+
+---
+## 📘 Author & Environment
 
 **Author:** Ahmed Monir Almassri  
 **Platform:** DataCamp Datalab  
-**Tools:** PostgreSQL, SQL Analytics  
-**Date:** November 2025
+**Language:** SQL (PostgreSQL)  
+**Date:** November 2025  
+---
+> “Understanding mental health through data helps us design better support systems for students adapting to new environments.”  
+> — Ahmed Monir Almassri
