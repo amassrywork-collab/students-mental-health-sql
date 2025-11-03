@@ -151,4 +151,38 @@ ORDER BY
         WHEN 'Grad' THEN 2
         WHEN 'Unknown' THEN 3
         ELSE 4
+
     END;
+/* ==========================================================
+   4️⃣ Final Core Analysis
+   ========================================================== */
+
+/* -- 4.1 Impact of Stay Duration on Mental Health (International Students Only)
+      -------------------------------------------------------------
+      Objective:
+        - Explore how the length of stay (stay) affects
+          average mental health diagnostic scores
+          among international students.
+        - The final output must include:
+            stay, count_int, average_phq, average_scs, average_as
+      ------------------------------------------------------------- */
+
+SELECT
+    stay AS stay,
+    COUNT(*) AS count_int,
+    ROUND(AVG(todep), 2) AS average_phq,   -- PHQ-9: Depression Score
+    ROUND(AVG(tosc), 2) AS average_scs,    -- SCS: Self-Confidence Score
+    ROUND(AVG(toas), 2) AS average_as      -- ASISS: Academic Stress Score
+FROM students
+WHERE inter_dom = 'Inter'
+  AND stay IS NOT NULL
+  AND TRIM(stay::text) <> ''
+GROUP BY stay
+ORDER BY stay DESC;  -- descending order as required
+
+/* Expected Output:
+   - 9 rows and 5 columns
+   - Columns: stay, count_int, average_phq, average_scs, average_as
+   - Shows aggregated averages of mental health indicators
+     for each stay duration category.
+*/
