@@ -1,69 +1,58 @@
-# 🧠 Analyzing Students’ Mental Health (SQL, DataCamp Datalab)
+# 🧠 Analyzing Students’ Mental Health (SQL Project)
 
-Exploratory SQL analysis of a students’ mental health dataset to explore how **stay duration**, **English proficiency**, and **academic level** relate to **depression (PHQ-9)**, **acculturative stress (ASISS)**, and **social connectedness (SCS)**.
-
-![Stay vs Mental](charts/stay_vs_mental.png)
-
----
-
-## 📂 Project Structure
-
-- `notebook.ipynb` — full DataCamp Datalab notebook  
-- `report.pdf` — exported report view  
-- `queries.sql` — all SQL code (data cleaning + relationships)  
-- `charts/` — exported bar charts  
-- `report_findings.md` — written summaries and interpretation  
+### 🎓 Project Overview
+This project investigates how the **length of stay** affects the **mental health diagnostic scores** of **international students**.  
+All analysis was conducted **entirely using SQL** within **DataCamp Datalab**.
 
 ---
 
-## 🎯 Research Questions
-
-1️⃣ Does **longer stay duration** improve mental health indicators?  
-2️⃣ Does **higher English proficiency** correlate with lower depression and stress?  
-3️⃣ How do **undergraduate vs graduate** students differ in well-being?
-
----
-
-## 🧪 Methodology
-
-- SQL environment: **DataCamp Datalab (PostgreSQL)**  
-- Data cleaning using `CASE`, `TRIM`, and `COALESCE`  
-- Aggregation with `AVG()` to compute mean depression, stress, and connectedness  
-- Custom ordering using `ORDER BY CASE` for readable chart outputs  
-- Data visualized with Datalab’s **Chart Builder** (bar & grouped charts)
+## 🎯 Objective
+To determine whether the duration of stay abroad influences students’ levels of:
+- **Depression (PHQ-9 test)**  
+- **Self-confidence (SCS test)**  
+- **Academic stress (ASISS test)**  
 
 ---
 
-## 🔍 Key Findings (Short Summary)
+## 🧩 Dataset Description
+The dataset `students` includes the following key columns:
 
-| Relationship | Main Insights |
-|---------------|---------------|
-| **Stay Duration** | Longer stays showed **slightly lower depression** and **higher social connectedness**, indicating better adaptation over time, though stress increased marginally. |
-| **English Proficiency** | Higher English proficiency correlated with **lower depression** and **moderately higher stress**, while connectedness remained stable. |
-| **Academic Level** | Graduate students experienced **lower depression (5.29)** but **higher stress (76.05)** and **stronger connectedness (41.19)** than undergraduates (8.43 / 72.07 / 37.16). |
-
-👉 Full written interpretation is available in [`report_findings.md`](report_findings.md).
-
----
-
-## 💡 Insights & Implications
-
-- **Adaptation over time** appears to improve emotional stability.  
-- **Language proficiency** reduces emotional strain but raises academic stress.  
-- **Graduate students** balance lower depression with higher workload-related pressure.  
-- Cultural and academic integration factors seem to jointly influence mental well-being.
+| Column | Description |
+|---------|-------------|
+| `inter_dom` | Student type (International or Domestic) |
+| `stay` | Length of stay (in years) |
+| `todep` | PHQ-9 depression test score |
+| `tosc` | SCS self-confidence score |
+| `toas` | ASISS academic stress score |
 
 ---
 
-## 🚀 How to Reproduce
+## 🧮 SQL Approach
 
-You can reproduce this analysis in **DataCamp Datalab**:
-1. Import the same `students` dataset.  
-2. Run the queries from [`queries.sql`](queries.sql).  
-3. Create grouped bar charts for each relationship.  
-4. Export the final report as PDF or Markdown.
+1. **Filter** to include only international students.  
+2. **Group** the data by `stay` (length of stay).  
+3. **Calculate averages** of each diagnostic test using `AVG()` and round to 2 decimals.  
+4. **Count** the number of students per group.  
+5. **Sort** results by stay in descending order.
 
 ---
+
+## 💻 Final SQL Query
+
+```sql
+-- FINAL: Stay (length) impact on mental health for INTERNATIONAL students
+SELECT
+  stay AS stay,
+  COUNT(*) AS count_int,
+  ROUND(AVG(todep), 2) AS average_phq,   -- PHQ-9
+  ROUND(AVG(tosc), 2) AS average_scs,    -- SCS
+  ROUND(AVG(toas), 2) AS average_as      -- ASISS
+FROM students
+WHERE inter_dom = 'Inter'
+  AND stay IS NOT NULL
+  AND TRIM(stay::text) <> ''
+GROUP BY stay
+ORDER BY stay DESC;
 
 ## 👤 Author
 
@@ -78,6 +67,5 @@ You can reproduce this analysis in **DataCamp Datalab**:
 `#SQL` `#DataCamp` `#DataAnalysis` `#DataEngineering` `#PortfolioProject`
 
 ---
-
 ### ⭐ If you liked this project:
 Give it a **star** 🌟 on [GitHub]([https://github.com/](https://github.com/amassrywork-collab)) and connect with me on [LinkedIn](www.linkedin.com/in/ahmed-m-a-almassri-15415b334) for more data projects!
